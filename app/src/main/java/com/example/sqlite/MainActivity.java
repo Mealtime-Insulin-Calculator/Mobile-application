@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     EditText name, contact, dob;
     Button insert, update, delete, view, CalculationButton,SavedMealButton, SettingButton;
-    DBHelper DB;
+    DBManager DB;
 
 
     @Override
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         update = findViewById(R.id.btnUpdate);
         delete = findViewById(R.id.btnDelete);
         view = findViewById(R.id.btnView);
-        DB = new DBHelper(this);
+        DB = new DBManager(this, "Food.db", "Lasagna");
         CalculationButton = findViewById(R.id.CalculationPage);
         SavedMealButton = findViewById(R.id.SavedMealPage);
         SettingButton = findViewById(R.id.SettingPage);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        /*
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 builder.setMessage(buffer.toString());
                 builder.show();
             }        });
+
+         */
     }
     // Method to open the Saved Meal activity page
     public void openActivityCalculation(){

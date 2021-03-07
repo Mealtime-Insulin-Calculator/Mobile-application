@@ -51,6 +51,24 @@
         android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/TestValue"
+        android:layout_width="99dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="450dp"
+        android:text="TestValue"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/FetchValue"
+        android:layout_width="99dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:text="TestValue"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/AddAnOption"
         android:layout_width="178dp"
         android:layout_height="66dp"

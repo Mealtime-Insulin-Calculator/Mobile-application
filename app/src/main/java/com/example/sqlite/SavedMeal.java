@@ -13,7 +13,7 @@ public class SavedMeal{
         this.typeOfMeal = "";
     }
 
-    public SavedMeal(ArrayList<Food> listOfFoodIn,String typeOfMealIn){
+    public SavedMeal(ArrayList<Food> listOfFoodIn,String typeOfMealIn){ 
         for (int i = 0; i<listOfFoodIn.size();i++){
             this.listOfFood.add(listOfFoodIn.get(i));
         }
