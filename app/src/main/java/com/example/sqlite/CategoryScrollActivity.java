@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class SettingActivity extends AppCompatActivity {
+public class CategoryScrollActivity extends AppCompatActivity {
 
     Button CalculationButton, SavedMealButton, SettingButton;
 
@@ -16,8 +16,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
-
+        setContentView(R.layout.activity_category_scroll);
         CalculationButton = findViewById(R.id.CalculationPage);
         SavedMealButton = findViewById(R.id.SavedMealPage);
         SettingButton = findViewById(R.id.SettingPage);
@@ -47,8 +46,6 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
-
-
     // Method to open the Saved Meal activity page
     public void openActivityCalculation(){
         Intent intent = new Intent(this, MainActivity.class );
@@ -57,11 +54,12 @@ public class SettingActivity extends AppCompatActivity {
 
     // Method to open the Saved Meal activity page
     public void openActivitySavedMeal(){
-        Intent intent = new Intent(this, SettingActivity.class );
+        Intent intent = new Intent(this, SavedMealActivity.class );
         startActivity(intent);
     }
     // Method to open the Setting page
     public void openActivitySetting(){
-        Toast.makeText(SettingActivity.this, "You are already on this page!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, SettingActivity.class );
+        startActivity(intent);
     }
 }

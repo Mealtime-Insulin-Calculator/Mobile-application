@@ -6,6 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".SavedMealActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:text="Saved Meals"
+        android:textSize="39sp"
+        android:layout_marginTop="13dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Breakfast"
+        android:layout_width="349dp"
+        android:layout_height="73dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Breakfast"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Lunch"
+        android:layout_width="349dp"
+        android:layout_height="73dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:text="Lunch"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Dinner"
+        android:layout_width="349dp"
+        android:layout_height="73dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"
+        android:text="Dinner"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Snacks"
+        android:layout_width="349dp"
+        android:layout_height="73dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"
+        android:text="Snacks"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/AddAnOption"
+        android:layout_width="178dp"
+        android:layout_height="66dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="550dp"
+        android:text="Add a category"
+        android:textSize="14sp" />
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/CalculationPage"
         android:layout_width="106dp"
@@ -36,4 +90,6 @@
         android:layout_marginTop="645dp"
         android:text="Settings"
         android:textSize="14sp" />
+
+
 </RelativeLayout>

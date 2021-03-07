@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class SavedMealActivity extends AppCompatActivity {
     Button CalculationButton, SavedMealButton, SettingButton;
+    Button Breakfast, Lunch, Dinner, Snacks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +21,20 @@ public class SavedMealActivity extends AppCompatActivity {
         CalculationButton = findViewById(R.id.CalculationPage);
         SavedMealButton = findViewById(R.id.SavedMealPage);
         SettingButton = findViewById(R.id.SettingPage);
+
+        Breakfast = findViewById(R.id.Breakfast);
+        Lunch = findViewById(R.id.Lunch);
+        Dinner = findViewById(R.id.Dinner);
+        Snacks = findViewById(R.id.Snacks);
+
+
+
+        Breakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityCategory();
+            }
+        });
 
 
         // Button to go through the Calculation page
@@ -57,6 +74,12 @@ public class SavedMealActivity extends AppCompatActivity {
     // Method to open the Setting page
     public void openActivitySetting(){
         Intent intent = new Intent(this, SettingActivity.class );
+        startActivity(intent);
+    }
+
+    // Method to open the Setting page
+    public void openActivityCategory(){
+        Intent intent = new Intent(this, CategoryScrollActivity.class );
         startActivity(intent);
     }
 }
