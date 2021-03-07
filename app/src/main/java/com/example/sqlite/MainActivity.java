@@ -2,6 +2,8 @@ package com.example.sqlite;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +13,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText name, contact, dob;
-    Button insert, update, delete, view;
+    Button insert, update, delete, view, CalculationButton,SavedMealButton, SettingButton;
     DBHelper DB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,36 @@ public class MainActivity extends AppCompatActivity {
         delete = findViewById(R.id.btnDelete);
         view = findViewById(R.id.btnView);
         DB = new DBHelper(this);
+        CalculationButton = findViewById(R.id.CalculationPage);
+        SavedMealButton = findViewById(R.id.SavedMealPage);
+        SettingButton = findViewById(R.id.SettingPage);
+
+        // Button to go through the Calculation page
+        CalculationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityCalculation();
+            }
+        });
+
+        // Button to go through the Saved Meal page
+        SavedMealButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivitySavedMeal();
+            }
+        });
+
+        // Button to go through the Setting page
+        SettingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivitySetting();
+            }
+        });
+
+
+
 
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,4 +118,23 @@ public class MainActivity extends AppCompatActivity {
                 builder.setMessage(buffer.toString());
                 builder.show();
             }        });
-    }}
+    }
+    // Method to open the Saved Meal activity page
+    public void openActivityCalculation(){
+        Toast.makeText(MainActivity.this, "You are already on this page!", Toast.LENGTH_SHORT).show();
+    }
+
+    // Method to open the Saved Meal activity page
+    public void openActivitySavedMeal(){
+        Intent intent = new Intent(this, SavedMealActivity.class );
+        startActivity(intent);
+    }
+    // Method to open the Setting page
+    public void openActivitySetting(){
+        Intent intent = new Intent(this, SettingActivity.class );
+        startActivity(intent);
+    }
+
+}
+
+

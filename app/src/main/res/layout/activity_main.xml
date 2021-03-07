@@ -11,70 +11,101 @@
         android:id="@+id/texttitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter details "
-        android:textSize="24sp"
         android:layout_marginTop="20dp"
-        />
+        android:text="Enter details "
+        android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:textSize="24sp"
-            android:layout_below="@+id/texttitle"
-            android:inputType="textPersonName"/>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/texttitle"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
 
 
     <EditText
         android:id="@+id/contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contact"
-        android:textSize="24sp"
         android:layout_below="@+id/name"
-        android:inputType="number"/>
+        android:hint="Contact"
+        android:inputType="number"
+        android:textSize="24sp" />
 
 
     <EditText
         android:id="@+id/dob"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date of birth"
-        android:textSize="24sp"
         android:layout_below="@+id/contact"
-        android:inputType="number"/>
-    
+        android:hint="Date of birth"
+        android:inputType="number"
+        android:textSize="24sp" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnInsert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Insert new data"
+        android:layout_below="@id/dob"
         android:layout_marginTop="30sp"
-        android:layout_below="@id/dob"/>
+        android:text="Insert new data"
+        android:textSize="24sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:layout_below="@id/btnInsert"
         android:text="Update data"
-        android:layout_below="@id/btnInsert"/>
+        android:textSize="24sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:layout_below="@id/btnUpdate"
         android:text="Deleting data"
-        android:layout_below="@id/btnUpdate"/>
+        android:textSize="24sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:layout_below="@id/btnDelete"
         android:text="View data"
-        android:layout_below="@id/btnDelete"/>
+        android:textSize="24sp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/CalculationPage"
+        android:layout_width="106dp"
+        android:layout_height="78dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="645dp"
+        android:text="Calculation"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SavedMealPage"
+        android:layout_width="106dp"
+        android:layout_height="78dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="146dp"
+        android:layout_marginTop="645dp"
+        android:text="Saved Meal"
+        android:textSize="14sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SettingPage"
+        android:layout_width="106dp"
+        android:layout_height="78dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="17dp"
+        android:layout_marginLeft="277dp"
+        android:layout_marginTop="645dp"
+        android:text="Settings"
+        android:textSize="14sp" />
 </RelativeLayout>
