@@ -35,7 +35,7 @@ public class SavedMealActivity extends AppCompatActivity {
         FetchValue = findViewById(R.id.FetchValue);
 
         // Database creation
-        getApplicationContext().deleteDatabase("Category.db");
+        // getApplicationContext().deleteDatabase("Category.db");
         DB = new DBManager(this,"Category.db", "Breakfast");
 
 
@@ -43,14 +43,14 @@ public class SavedMealActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                  boolean sucess = DB.addOne("Lasagna");
-                Toast.makeText(SavedMealActivity.this, "Sucess" + sucess, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SavedMealActivity.this, "Sucess " + sucess, Toast.LENGTH_SHORT).show();
             }
         });
 
         FetchValue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor res = DB.getData();
+                ArrayList<String> res = DB.getData();
                 Toast.makeText(SavedMealActivity.this, "resultat: " + res, Toast.LENGTH_SHORT).show();
             }
         });

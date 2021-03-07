@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
-
+import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import java.sql.SQLInput;
 
@@ -76,10 +76,18 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
         this.TableName = TableName;
     }
 
-    public Cursor getData(){
+    public java.util.ArrayList<String> getData(){
 
             SQLiteDatabase db = this.getReadableDatabase();
-            Cursor res = db.rawQuery("SELECT * FROM " + TableName, null);
-    return res;
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TableName, null);
+            java.util.ArrayList<String> fetchList = new java.util.ArrayList<String>();
+
+            if (cursor.moveToFirst()){
+                do {
+                    String FoodName = cursor.getString(1);
+                    fetchList.add(FoodName);
+                } while(cursor.moveToNext());
+            }
+    return fetchList;
     }
 }

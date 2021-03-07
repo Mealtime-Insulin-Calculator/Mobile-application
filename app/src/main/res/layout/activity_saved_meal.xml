@@ -65,7 +65,7 @@
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="450dp"
-        android:text="TestValue"
+        android:text="FetchValue"
         android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
