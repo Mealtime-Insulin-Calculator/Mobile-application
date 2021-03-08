@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         SavedMealButton = findViewById(R.id.SavedMealPage);
         SettingButton = findViewById(R.id.SettingPage);
 
+        //HEREEEE
+        Button b = findViewById(R.id.button2);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,pop_up_test.class));
+            }
+        });
+
         // Button to go through the Calculation page
         CalculationButton.setOnClickListener(new View.OnClickListener() {
             @Override

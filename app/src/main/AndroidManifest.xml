@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sqlite">
-        <activity android:name=".CategoryScrollActivity"></activity>
+        <activity android:name=".pop_up_test">
+            android:theme="@style/AppTheme.CustomTheme" </activity>
+        <activity android:name=".CategoryScrollActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".SavedMealActivity" />
         <activity android:name=".MainActivity">
@@ -20,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SavedMeal" />
+
     </application>
 
 </manifest>
