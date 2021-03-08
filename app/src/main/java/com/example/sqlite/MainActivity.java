@@ -129,7 +129,12 @@ public class MainActivity extends AppCompatActivity {
         Calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityCalculate();
+                if (ElementName.getText().toString().isEmpty() || Carb.getText().toString().isEmpty() || Fiber.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Enter correctly the data", Toast.LENGTH_SHORT).show();
+                } else {
+                    openActivityCalculate();
+                }
+                
 
                 String TableName;
 
