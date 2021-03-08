@@ -1,10 +1,13 @@
 package com.example.sqlite;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.sqlite.Food;
 
 import java.util.ArrayList;
 
-public class SavedMeal{
+public class SavedMeal implements Parcelable {
 
     private ArrayList<Food> listOfFood = new ArrayList<Food>();
     private String typeOfMeal;
@@ -19,6 +22,34 @@ public class SavedMeal{
         }
         this.typeOfMeal = typeOfMealIn;
     }
+
+    protected SavedMeal(Parcel in) {
+        listOfFood = in.createTypedArrayList(Food.CREATOR);
+        typeOfMeal = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(listOfFood);
+        dest.writeString(typeOfMeal);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<SavedMeal> CREATOR = new Creator<SavedMeal>() {
+        @Override
+        public SavedMeal createFromParcel(Parcel in) {
+            return new SavedMeal(in);
+        }
+
+        @Override
+        public SavedMeal[] newArray(int size) {
+            return new SavedMeal[size];
+        }
+    };
 
     public void additionOfFood(Food foodIn){
         this.listOfFood.add(foodIn);

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <TextView
+        android:id="@+id/texttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Chose a category"
+        android:textSize="34sp"
+         />
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/Breakfast"
+        android:layout_width="146dp"
+        android:layout_height="78dp"
+        android:layout_centerHorizontal="true"
+        android:text="Breakfast"
+        android:textSize="14sp"
+        android:layout_marginTop="200dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/Lunch"
+        android:layout_width="146dp"
+        android:layout_height="78dp"
+        android:layout_centerHorizontal="true"
+        android:text="Lunch"
+        android:textSize="14sp"
+         />
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/Dinner"
+        android:layout_width="146dp"
+        android:layout_height="78dp"
+        android:layout_centerHorizontal="true"
+        android:text="Dinner"
+        android:textSize="14sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="396dp" />
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/Snacks"
+        android:layout_width="146dp"
+        android:layout_height="78dp"
+        android:layout_centerHorizontal="true"
+        android:text="Snacks"
+        android:textSize="14sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="492dp" />
+
+</RelativeLayout>

@@ -3,10 +3,13 @@
  * 
  */
 package com.example.sqlite;
-public class Food{
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Food implements Parcelable {
     private int carbohydrates = 0;
     private int fibers = 0;
-    
     private String name = "";
     private String subsectionOfFood = "";
     private String picture = "";
@@ -56,6 +59,26 @@ public class Food{
         this.picture = null;
     }
 
+
+    protected Food(Parcel in) {
+        carbohydrates = in.readInt();
+        fibers = in.readInt();
+        name = in.readString();
+        subsectionOfFood = in.readString();
+        picture = in.readString();
+    }
+
+    public static final Creator<Food> CREATOR = new Creator<Food>() {
+        @Override
+        public Food createFromParcel(Parcel in) {
+            return new Food(in);
+        }
+
+        @Override
+        public Food[] newArray(int size) {
+            return new Food[size];
+        }
+    };
 
     public int getCarbohydrates(){
         return carbohydrates;
@@ -115,5 +138,19 @@ public class Food{
 
     public String toString(){
         return "Here is information about " + this.name + ", part of "+this.subsectionOfFood+" which contains the following:\ncarbs: " + this.carbohydrates+"\nfibers: "+this.fibers+"\nThe picture associated to this Food is stored as "+this.picture+".";
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(carbohydrates);
+        dest.writeInt(fibers);
+        dest.writeString(name);
+        dest.writeString(subsectionOfFood);
+        dest.writeString(picture);
     }
 }
