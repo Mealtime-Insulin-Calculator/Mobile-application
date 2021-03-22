@@ -139,6 +139,9 @@ public class Food implements Parcelable {
     public String toString(){
         return "Here is information about " + this.name + ", part of "+this.subsectionOfFood+" which contains the following:\ncarbs: " + this.carbohydrates+"\nfibers: "+this.fibers+"\nThe picture associated to this Food is stored as "+this.picture+".";
     }
+    public String BasictoString(){
+        return "carbs: "+ this.carbohydrates+"\nfibers: "+this.fibers;
+    }
 
     @Override
     public int describeContents() {

@@ -66,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculationFragment()).commit();
     }
 
+
+    public void fragmentOpenner(Object fragmentClass) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, (Fragment) fragmentClass).commit();
+    }
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override

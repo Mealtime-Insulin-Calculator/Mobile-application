@@ -2,6 +2,7 @@ package com.example.sqlite;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,15 @@ public class CalculationFragment extends Fragment {
             if (currentMeal.getListOfFood().size()>0) {
                 Toast.makeText(getActivity(),"you pass", Toast.LENGTH_SHORT).show();
 
+
+
+                CalculatedFragment calculatedPage = new CalculatedFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("currentMeal", (Parcelable) currentMeal);
+                calculatedPage.setArguments(bundle);
+
+                ((MainActivity) getActivity()).fragmentOpenner(calculatedPage);
             } else {
                 Toast.makeText(getActivity(),"you dont", Toast.LENGTH_SHORT).show();
             }
@@ -82,7 +92,7 @@ public class CalculationFragment extends Fragment {
         @Override
         public void onClick(View v) {
             if (ElementName.getText().toString().isEmpty() || Carb.getText().toString().isEmpty() || Fiber.getText().toString().isEmpty()) {
-                Toast.makeText(getActivity(), "no data you dummy", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "enter your data fully", Toast.LENGTH_SHORT).show();
 
                 getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculationFragment()).commit();
 
