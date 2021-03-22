@@ -37,14 +37,11 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
 
         }
     }
-
-
     // Modify existing database with new elements (simplification)
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
     public boolean addOne(String nameOfFood){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

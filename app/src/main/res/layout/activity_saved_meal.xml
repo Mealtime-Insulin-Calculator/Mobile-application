@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SavedMealActivity">
+    tools:context=".SavedMealActivity"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,23 +51,7 @@
         android:text="Snacks"
         android:textSize="14sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/TestValue"
-        android:layout_width="99dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="false"
-        android:layout_marginTop="450dp"
-        android:text="TestValue"
-        android:textSize="14sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/FetchValue"
-        android:layout_width="99dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:text="FetchValue"
-        android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/AddAnOption"
@@ -84,9 +69,9 @@
         android:layout_height="78dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="17dp"
-        android:layout_marginTop="645dp"
+        android:layout_marginTop="655dp"
         android:text="Calculation"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/SavedMealPage"
@@ -94,9 +79,9 @@
         android:layout_height="78dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="146dp"
-        android:layout_marginTop="645dp"
+        android:layout_marginTop="655dp"
         android:text="Saved Meal"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/SettingPage"
@@ -105,9 +90,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginRight="17dp"
         android:layout_marginLeft="277dp"
-        android:layout_marginTop="645dp"
+        android:layout_marginTop="655dp"
         android:text="Settings"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
 
 </RelativeLayout>
