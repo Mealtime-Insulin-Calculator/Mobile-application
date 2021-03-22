@@ -1,18 +1,25 @@
 package com.example.sqlite;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.Fragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.Serializable;
 
@@ -20,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     EditText Subsection, ElementName, Carb, Fiber;
     Button Starter, MainMeal, Drinks, Condiments, Calculate, CalculationButton,SavedMealButton, SettingButton;
     DBManager DB;
+
+    Button Breakfast, Lunch, Dinner, Snacks;
     public SavedMeal currentMeal = new SavedMeal();
     // public static String verifySubsection = "Starter";
 
@@ -28,152 +37,59 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
 
-        TextView Subsection = (TextView)findViewById(R.id.SubsectionName);
-        // By default we are on the starter subsection
-        Subsection.setText("Starter");
-
-        ElementName = (EditText)findViewById(R.id.ElementName);
-        Carb = (EditText)findViewById(R.id.Carb);
-        Fiber = (EditText)findViewById(R.id.Fiber);
+        setContentView(R.layout.activity_saved_meal2);
 
 
-
-
-        Starter = findViewById(R.id.Starter);
-        MainMeal = findViewById(R.id.MainMeal);
-        Drinks = findViewById(R.id.Drinks);
-        Condiments = findViewById(R.id.Condiments);
-
-        Calculate = findViewById(R.id.Calculate);
-
-
-
-
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
         CalculationButton = findViewById(R.id.CalculationPage);
         SavedMealButton = findViewById(R.id.SavedMealPage);
         SettingButton = findViewById(R.id.SettingPage);
 
-        // Button to go through the Calculation page
-        CalculationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityCalculation();
-            }
-        });
-
-        // Button to go through the Saved Meal page
-        SavedMealButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivitySavedMeal();
-            }
-        });
-
-        // Button to go through the Setting page
-        SettingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivitySetting();
-            }
-        });
-
-        // Subsection buttons
-        Starter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Subsection.setText("Starter");
-                // subsectionUpdate("Starter");
-
-                if (ElementName.getText().toString().isEmpty() || Carb.getText().toString().isEmpty() || Fiber.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Enter correctly the data", Toast.LENGTH_SHORT).show();
-                } else {
+        Breakfast = findViewById(R.id.Breakfast);
+        Lunch = findViewById(R.id.Lunch);
+        Dinner = findViewById(R.id.Dinner);
+        Snacks = findViewById(R.id.Snacks);
 
 
-                    Food starter = new Food(Integer.parseInt(Carb.getText().toString()), Integer.parseInt(Fiber.getText().toString()), ElementName.getText().toString(), "Starter");
-                    currentMeal.additionOfFood(starter);
+        // Database creation
+        // getApplicationContext().deleteDatabase("Category.db");
+        DB = new DBManager(this,"Category.db", "Breakfast");
 
-                    Toast.makeText(MainActivity.this, "currentMeal : " + currentMeal, Toast.LENGTH_LONG).show();
 
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculationFragment()).commit();
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+
+                    switch (item.getItemId()) {
+                        case R.id.nav_calculation:
+                            selectedFragment = new CalculationFragment();
+                            break;
+                        case R.id.nav_meals:
+                            selectedFragment = new SavedMealFragment();
+                            break;
+                        case R.id.nav_settings:
+                            selectedFragment = new SettingsFragment();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    return true;
                 }
-
-
-            }
-        });
-
-        MainMeal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Subsection.setText("MainMeal");
-                //subsectionUpdate("MainMeal");
-            }
-        });
-
-        Drinks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Subsection.setText("Drinks");
-                //subsectionUpdate("Drinks");
-            }
-        });
-
-        Condiments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Subsection.setText("Condiments");
-                //subsectionUpdate("Condiments");
-            }
-        });
-
-        Calculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ElementName.getText().toString().isEmpty() || Carb.getText().toString().isEmpty() || Fiber.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Enter correctly the data", Toast.LENGTH_SHORT).show();
-                } else {
-                    openActivityCalculate();
-                }
-
-
-                String TableName;
-
-
-                // DB = new DBManager(this, "Food.db", TableName);
-            }
-        });
-
-
-
-    }
-    // Method to open the Saved Meal activity page
-    public void openActivityCalculation(){
-        Toast.makeText(MainActivity.this, "You are already on this page!", Toast.LENGTH_SHORT).show();
-    }
-
-    // Method to open the Saved Meal activity page
-    public void openActivitySavedMeal(){
-        Intent intent = new Intent(this, SavedMealActivity.class );
-        startActivity(intent);
-    }
-    // Method to open the Setting page
-    public void openActivitySetting(){
-        Intent intent = new Intent(this, SettingActivity.class );
-        startActivity(intent);
-    }
-
-    public void openActivityCalculate(){
-        Intent intent = new Intent(this, CalculationActivity.class ).putExtra("currentMeal", (Parcelable) currentMeal);
-        startActivity(intent);
-    }
-    /*
-    public void subsectionUpdate(String subsectionName){
-        this.verifySubsection = subsectionName;
-    }
-
-     */
+            };
 
 }
+
 
 
