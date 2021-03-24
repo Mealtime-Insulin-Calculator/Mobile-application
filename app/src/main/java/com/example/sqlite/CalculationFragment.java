@@ -132,7 +132,7 @@ public class CalculationFragment extends Fragment {
         pieChart.invalidate();
 
         // can do some animation, haven't look at it too much tbh
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        pieChart.animateY(1000, Easing.EaseInOutQuad);
 
     }
     private View.OnClickListener calculateListener = new View.OnClickListener() {

@@ -31,7 +31,8 @@ public class CalculatedFragment extends Fragment {
 
         FibersAmountOutput = (TextView) rootView.findViewById(R.id.FibersAmountOutput);
 
-
+        // DB = new DBManager(this,"Category.db", "Breakfast");
+        // would need this at some point
 
 
         AddElementToSavedMeal = rootView.findViewById(R.id.AddElementToSavedMeal);
@@ -86,6 +87,7 @@ public class CalculatedFragment extends Fragment {
     private View.OnClickListener addElementSavedMeal = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            // will need a pop up here to the option of chosing databases.
                 Bundle bundle = getArguments();
                 Food food = currentMeal.getListOfFood().get(0);
 
