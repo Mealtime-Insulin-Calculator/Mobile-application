@@ -1,6 +1,7 @@
 package com.example.sqlite;
 
 import android.app.FragmentManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -16,11 +17,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
 public class CalculationFragment extends Fragment {
     public SavedMeal currentMeal = new SavedMeal();
     private int numbersOfElements;
     private String subsectionName;
 
+    private PieChart pieChart;
     private TextView Subsection;
     private EditText ElementName;
     private EditText Carb;
@@ -37,6 +50,8 @@ public class CalculationFragment extends Fragment {
         subsectionName = "Starter";
         Subsection.setText(subsectionName);
 
+        // Piechart element
+        pieChart = rootView.findViewById(R.id.CalculationPiechart);
 
         // Editable text
         ElementName = (EditText)rootView.findViewById(R.id.ElementName);
@@ -62,9 +77,64 @@ public class CalculationFragment extends Fragment {
 
 
         AddElement.setOnClickListener(addElement);
+
+        setupPieChart();
+
+        loadPieChartData(currentMeal);
         return rootView ;
     }
 
+    private void setupPieChart() {
+        pieChart.setDrawHoleEnabled(true); // donut pie
+        pieChart.setUsePercentValues(true);
+        pieChart.setEntryLabelTextSize(12);
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setCenterText("the charttt");
+        pieChart.setCenterTextSize(24);
+        pieChart.getDescription().setEnabled(false);
+
+        Legend legend = pieChart.getLegend();
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+        legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+        legend.setDrawInside(false);
+        // enable it if you wanna see how it looks
+        legend.setEnabled(false);
+    }
+    private void loadPieChartData(SavedMeal currentMeal) {
+
+        ArrayList<PieEntry> entries = new ArrayList<>();
+
+        // test values, we'd have to use the elements of currentMeal
+        // exemple currentMeal.listoffood().getName()
+        entries.add(new PieEntry(0.2f, "food"));
+        entries.add(new PieEntry(0.5f, "food2"));
+        ArrayList<Integer> colors = new ArrayList<>();
+        for (int color: ColorTemplate.MATERIAL_COLORS) {
+            colors.add(color);
+        }
+
+        for(int color: ColorTemplate.VORDIPLOM_COLORS) {
+            colors.add(color);
+        }
+
+        PieDataSet dataSet = new PieDataSet(entries, "food lol");
+        dataSet.setColors(colors);
+
+        PieData data = new PieData(dataSet);
+
+        data.setDrawValues(true);
+        data.setValueFormatter(new PercentFormatter(pieChart));
+        data.setValueTextSize(12f);
+        data.setValueTextColor(Color.BLACK);
+
+        pieChart.setData(data);
+        pieChart.invalidate();
+
+        // can do some animation, haven't look at it too much tbh
+        pieChart.animateY(1400, Easing.EaseInOutQuad);
+
+    }
     private View.OnClickListener calculateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

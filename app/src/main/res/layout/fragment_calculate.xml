@@ -110,6 +110,14 @@
         app:layout_constraintTop_toBottomOf="@+id/ElementName"
         app:layout_constraintVertical_bias="0.035" />
 
+
+     <com.github.mikephil.charting.charts.PieChart
+         android:id="@+id/CalculationPiechart"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+
+         />
+
     <!-- Calculate button -->
     <android.widget.Button
         android:id="@+id/Calculate"
