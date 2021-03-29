@@ -93,6 +93,7 @@ public class CalculationFragment extends Fragment {
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 
+
         Legend legend = pieChart.getLegend();
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
@@ -107,9 +108,11 @@ public class CalculationFragment extends Fragment {
 
         // test values, we'd have to use the elements of currentMeal
         // exemple currentMeal.listoffood().getName()
+
         for (int i = 0;i<currentMeal.getListOfFood().size();i++){
             entries.add(new PieEntry(currentMeal.getListOfFood().get(i).getCarbohydrates(), currentMeal.getListOfFood().get(i).getName()));
         }
+
         ArrayList<Integer> colors = new ArrayList<>();
         for (int color: ColorTemplate.MATERIAL_COLORS) {
             colors.add(color);
@@ -135,18 +138,14 @@ public class CalculationFragment extends Fragment {
         // can do some animation, haven't look at it too much tbh
         pieChart.animateY(1000, Easing.EaseInOutQuad);
 
+
     }
     private View.OnClickListener calculateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if (currentMeal.getListOfFood().size()>0) {
-                Toast.makeText(getActivity(),"you pass", Toast.LENGTH_SHORT).show();
-
-
-
                 CalculatedFragment calculatedPage = new CalculatedFragment();
-
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("currentMeal", (Parcelable) currentMeal);
                 calculatedPage.setArguments(bundle);
@@ -179,7 +178,9 @@ public class CalculationFragment extends Fragment {
                 * */
                 Food starter = new Food(Integer.parseInt(Carb.getText().toString()), Integer.parseInt(Fiber.getText().toString()), ElementName.getText().toString(), subsectionName );
                 currentMeal.additionOfFood(starter);
+
                 loadPieChartData(currentMeal);
+
                 ElementName.setText("");
 
 

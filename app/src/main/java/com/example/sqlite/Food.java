@@ -81,19 +81,19 @@ public class Food implements Parcelable {
     };
 
     public int getCarbohydrates(){
-        return carbohydrates;
+        return this.carbohydrates;
     }
 
     public int getFibers(){
-        return fibers;
+        return this.fibers;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public String getSubsectionOfFood(){
-        return subsectionOfFood;
+        return this.subsectionOfFood;
     }
 
     public String getPicture(){
