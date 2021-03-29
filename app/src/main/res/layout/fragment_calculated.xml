@@ -30,6 +30,7 @@
         />
 
 
+
     <!-- text elements-->
     <TextView
         android:id="@+id/CarbsAmount"

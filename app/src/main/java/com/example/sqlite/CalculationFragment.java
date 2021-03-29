@@ -93,6 +93,7 @@ public class CalculationFragment extends Fragment {
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 
+
         Legend legend = pieChart.getLegend();
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
@@ -109,6 +110,7 @@ public class CalculationFragment extends Fragment {
         // exemple currentMeal.listoffood().getName()
         entries.add(new PieEntry(0.2f, "food"));
         entries.add(new PieEntry(0.5f, "food2"));
+
         ArrayList<Integer> colors = new ArrayList<>();
         for (int color: ColorTemplate.MATERIAL_COLORS) {
             colors.add(color);
@@ -134,18 +136,14 @@ public class CalculationFragment extends Fragment {
         // can do some animation, haven't look at it too much tbh
         pieChart.animateY(1000, Easing.EaseInOutQuad);
 
+
     }
     private View.OnClickListener calculateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if (currentMeal.getListOfFood().size()>0) {
-                Toast.makeText(getActivity(),"you pass", Toast.LENGTH_SHORT).show();
-
-
-
                 CalculatedFragment calculatedPage = new CalculatedFragment();
-
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("currentMeal", (Parcelable) currentMeal);
                 calculatedPage.setArguments(bundle);
@@ -167,7 +165,7 @@ public class CalculationFragment extends Fragment {
                 getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculationFragment()).commit();
 
             } else {
-                ElementName.setText("");
+
                 /*
                 * Carb.getText().clear() and
                 * Carb.setText("")
@@ -178,6 +176,7 @@ public class CalculationFragment extends Fragment {
                 * */
                 Food starter = new Food(Integer.parseInt(Carb.getText().toString()), Integer.parseInt(Fiber.getText().toString()), ElementName.getText().toString(), subsectionName );
                 currentMeal.additionOfFood(starter);
+                ElementName.setText("");
 
 
                 Toast.makeText(getActivity(),"Food have been added" + currentMeal.getListOfFood().size(), Toast.LENGTH_LONG).show();

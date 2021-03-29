@@ -1,7 +1,10 @@
 package com.example.sqlite;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ public class CalculatedFragment extends Fragment {
     SavedMeal currentMeal;
     private Button AddElementToSavedMeal;
     private TextView CarbsAmountOutput, FibersAmountOutput, StarterOutput,  MainMealOutput, DrinksOutput, CondimentsOutput;
+    DBManager DB;
 
 
     @Nullable
@@ -31,8 +35,6 @@ public class CalculatedFragment extends Fragment {
 
         FibersAmountOutput = (TextView) rootView.findViewById(R.id.FibersAmountOutput);
 
-        // DB = new DBManager(this,"Category.db", "Breakfast");
-        // would need this at some point
 
 
         AddElementToSavedMeal = rootView.findViewById(R.id.AddElementToSavedMeal);
@@ -84,16 +86,43 @@ public class CalculatedFragment extends Fragment {
         CarbsAmountOutput.setText(String.valueOf(totalAmountOfCarbs));
         FibersAmountOutput.setText(String.valueOf(totalAmountOfFibers));
     }
+
     private View.OnClickListener addElementSavedMeal = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // will need a pop up here to the option of chosing databases.
-                Bundle bundle = getArguments();
-                Food food = currentMeal.getListOfFood().get(0);
+            CustomPopup customPopup = new CustomPopup(getActivity());
+            String str = customPopup.radioButtonCheck();
+            customPopup.getButtonBack().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Toast.makeText(getActivity(),"not there yet", Toast.LENGTH_SHORT).show();
+                    customPopup.dismiss();
+                }
+            });
+
+            customPopup.getButtonProceed().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (customPopup.getMealName().isEmpty() ) {
+                        Toast.makeText(getActivity(), "Enter the meal name plz", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        DB = new DBManager(getActivity(), "Food.db", customPopup.getMealName());
+
+                        for (int i = 0; i < currentMeal.getListOfFood().size(); i++) {
+                            Food food = currentMeal.getListOfFood().get(i);
+
+                            DB.addOne(food.getName(), food.getCarbohydrates(), food.getFibers(), food.getSubsectionOfFood());
+                        }
+                        customPopup.dismiss();
+                    }
+
+                }
+            });
+            customPopup.build();
 
         }
+
     };
 
 }
