@@ -47,7 +47,7 @@ public class CalculationFragment extends Fragment {
 
         Subsection = (TextView) rootView.findViewById(R.id.SubsectionName);
         // By default we are on the starter subsection
-        subsectionName = "Starter";
+        subsectionName = "Main Meal";
         Subsection.setText(subsectionName);
 
         // Piechart element
@@ -89,7 +89,7 @@ public class CalculationFragment extends Fragment {
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
         pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("the charttt");
+        pieChart.setCenterText("");
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 
@@ -108,8 +108,10 @@ public class CalculationFragment extends Fragment {
 
         // test values, we'd have to use the elements of currentMeal
         // exemple currentMeal.listoffood().getName()
-        entries.add(new PieEntry(0.2f, "food"));
-        entries.add(new PieEntry(0.5f, "food2"));
+
+        for (int i = 0;i<currentMeal.getListOfFood().size();i++){
+            entries.add(new PieEntry(currentMeal.getListOfFood().get(i).getCarbohydrates(), currentMeal.getListOfFood().get(i).getName()));
+        }
 
         ArrayList<Integer> colors = new ArrayList<>();
         for (int color: ColorTemplate.MATERIAL_COLORS) {
@@ -176,6 +178,9 @@ public class CalculationFragment extends Fragment {
                 * */
                 Food starter = new Food(Integer.parseInt(Carb.getText().toString()), Integer.parseInt(Fiber.getText().toString()), ElementName.getText().toString(), subsectionName );
                 currentMeal.additionOfFood(starter);
+
+                loadPieChartData(currentMeal);
+
                 ElementName.setText("");
 
 

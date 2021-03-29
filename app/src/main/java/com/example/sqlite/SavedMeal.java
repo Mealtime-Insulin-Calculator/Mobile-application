@@ -59,6 +59,18 @@ public class SavedMeal implements Parcelable {
         this.typeOfMeal = foodClass;
     }
 
+    public int[] totalCarbAndFiber(){
+        int [] totals = {0,0};
+
+        for (int i = 0; i<getListOfFood().size();i++){
+            totals[0] += (this.listOfFood.get(i)).getCarbohydrates();
+            totals[1] += (this.listOfFood.get(i)).getFibers();
+
+        }
+
+        return totals;
+    }
+
     public ArrayList<Food> getListOfFood(){
         return listOfFood;
     }

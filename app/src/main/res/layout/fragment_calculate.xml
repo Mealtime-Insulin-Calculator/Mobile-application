@@ -121,7 +121,6 @@
         android:layout_width="300dp"/>
 
 
-
     <!-- Calculate button -->
     <android.widget.Button
         android:id="@+id/Calculate"
