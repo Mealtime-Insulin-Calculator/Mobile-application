@@ -104,8 +104,7 @@
         app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.226" />
-
+        app:layout_constraintVertical_bias="0.185" />
 
     <TextView
         android:id="@+id/MainMeal"
@@ -116,10 +115,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintHorizontal_bias="0.816"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.185" />
 
     <TextView
         android:id="@+id/Drinks"
@@ -133,7 +132,8 @@
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.487" />
+
 
     <TextView
         android:id="@+id/Condiments"
@@ -144,11 +144,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.457" />
-
+        app:layout_constraintVertical_bias="0.486" />
 
     <TextView
         android:id="@+id/StarterOutput"
@@ -206,10 +205,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.539" />
 
+    /*//app:layout_constraintBottom_toTopOf="@+id/Calculate"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.576"
+    //app:layout_constraintStart_toStartOf="parent"
+    //app:layout_constraintTop_toBottomOf="@+id/AddElement"*/
+
+
     <android.widget.Button
         android:id="@+id/AddElementToSavedMeal"
-        android:layout_width="268dp"
-        android:layout_height="83dp"
+        android:layout_width="235dp"
+        android:layout_height="67dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button"
         android:elevation="10dp"
@@ -218,10 +224,55 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.876" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/StarterPiechart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/Drinks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Starter"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/MainMealPiChart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="260dp"
+        app:layout_constraintBottom_toTopOf="@+id/Condiments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainMeal"/>
+
+    //app:layout_constraintBottom_toTopOf="@+id/Condiments"
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/DrinksPieChart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Drinks" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/CondimentPieChart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Condiments" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
