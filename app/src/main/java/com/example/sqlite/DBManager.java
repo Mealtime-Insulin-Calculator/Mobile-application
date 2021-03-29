@@ -4,7 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import java.util.ArrayList;
@@ -29,12 +31,13 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
     // Called the first time the database is accessed.
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableSatement;
+        String createTableStatement;
         if (DatabaseName == "Category.db"){
-            createTableSatement = "CREATE TABLE " + TableName + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FoodName TEXT)";
-            db.execSQL(createTableSatement);
+            createTableStatement = "CREATE TABLE " + TableName + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FoodName TEXT)";
+            db.execSQL(createTableStatement);
         } else if (DatabaseName == "Food.db") {
-
+            createTableStatement = "CREATE TABLE " + TableName + " (FoodVariable TEXT, Carbs INTEGER, Fibers INTEGER, SubSection TEXT)";
+            db.execSQL(createTableStatement);
         }
     }
     // Modify existing database with new elements (simplification)
@@ -42,9 +45,11 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
     public boolean addOne(String nameOfFood){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
 
         cv.put("FoodName", nameOfFood);
 
@@ -54,6 +59,27 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
         } else {
             return true;
         }
+    }
+
+    public boolean addOne(String foodVariable, int carbs, int fibers, String subsection){
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+
+        cv.put("FoodVariable", foodVariable);
+        cv.put("Carbs", carbs);
+        cv.put("Fibers", fibers);
+        cv.put("SubSection", subsection);
+
+        long insert = db.insert(TableName, null, cv);
+        if (insert == -1){
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
     public boolean deleteOne(String nameOfFood){
@@ -73,8 +99,8 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
         this.TableName = TableName;
     }
 
-    public java.util.ArrayList<String> getData(){
-
+    public Cursor getData(){
+            /*
             SQLiteDatabase db = this.getReadableDatabase();
             Cursor cursor = db.rawQuery("SELECT * FROM " + TableName, null);
             java.util.ArrayList<String> fetchList = new java.util.ArrayList<String>();
@@ -82,9 +108,22 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
             if (cursor.moveToFirst()){
                 do {
                     String FoodName = cursor.getString(1);
+                    String Carbs = cursor.getString(2);
+                    String Fibers = cursor.getString(3);
+                    String Subsection = cursor.getString(4);
+
                     fetchList.add(FoodName);
+                    fetchList.add(Carbs);
+                    fetchList.add(Fibers);
+                    fetchList.add(Subsection);
+
                 } while(cursor.moveToNext());
             }
     return fetchList;
+
+             */
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TableName, null);
+        return cursor;
     }
 }

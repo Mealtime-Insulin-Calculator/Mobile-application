@@ -29,10 +29,8 @@ public class SettingsFragment extends Fragment {
     private View.OnClickListener notificationListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            CalculatedFragment calculatedPage = new CalculatedFragment();
             NotificationFragment notificationPage = new NotificationFragment();
             ((MainActivity) getActivity()).fragmentOpenner(notificationPage);
-            Toast.makeText(getActivity(), "please work", Toast.LENGTH_SHORT).show();
 
         }
     };
