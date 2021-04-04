@@ -45,6 +45,7 @@
         android:elevation="10dp"
         android:padding="10dp"
         android:text="Notifications"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,5 +53,43 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <android.widget.Button
+        android:id="@+id/ExportHistory"
+        android:layout_width="176dp"
+        android:layout_height="71dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="428dp"
+        android:background="@drawable/button"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:text="Export History"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Notification" />
+
+    <android.widget.Button
+        android:id="@+id/PrivacyPolicy"
+        android:layout_width="176dp"
+        android:layout_height="71dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="328dp"
+        android:background="@drawable/button"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:text="Privacy Policy"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExportHistory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

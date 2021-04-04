@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 public class SettingsFragment extends Fragment {
 
-    private Button Notification;
+    private Button Notification, ExportHistory, PrivacyPolicy;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,6 +21,12 @@ public class SettingsFragment extends Fragment {
 
         Notification = rootView.findViewById(R.id.Notification);
         Notification.setOnClickListener(notificationListener);
+
+        ExportHistory = rootView.findViewById(R.id.ExportHistory);
+        ExportHistory.setOnClickListener(exportListener);
+
+        PrivacyPolicy = rootView.findViewById(R.id.PrivacyPolicy);
+        PrivacyPolicy.setOnClickListener(privacyListener);
         return rootView;
 
 
@@ -32,6 +38,20 @@ public class SettingsFragment extends Fragment {
             NotificationFragment notificationPage = new NotificationFragment();
             ((MainActivity) getActivity()).fragmentOpenner(notificationPage);
 
+        }
+    };
+
+    private View.OnClickListener exportListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(), "Feature not supported yet.", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private View.OnClickListener privacyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(), "Feature not supported yet.", Toast.LENGTH_SHORT).show();
         }
     };
 }

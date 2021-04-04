@@ -28,7 +28,8 @@ public class CategoryFragment extends Fragment {
     private View.OnClickListener buttonBackListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getActivity().getFragmentManager().popBackStack();
+            SavedMealFragment savedMealFragment = new SavedMealFragment();
+            ((MainActivity) getActivity()).fragmentOpenner(savedMealFragment);
 
         }
     };
