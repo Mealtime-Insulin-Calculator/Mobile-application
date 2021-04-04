@@ -16,7 +16,7 @@
         android:background="@drawable/bg"
         android:elegantTextHeight="true"
         android:gravity="center_horizontal"
-        android:text="Saved Meal"
+        android:text="Saved Meals"
         android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constrainedHeight="true"
@@ -39,7 +39,7 @@
         android:layout_width="349dp"
         android:layout_height="73dp"
         android:layout_centerHorizontal="true"
-
+        android:textColor="@color/black"
         android:background="@drawable/button"
         android:elevation="10dp"
         android:padding="10dp"
@@ -61,6 +61,7 @@
         android:elevation="10dp"
         android:padding="10dp"
         android:text="Lunch"
+        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
         android:layout_width="349dp"
         android:layout_height="73dp"
         android:layout_centerHorizontal="true"
-
+        android:textColor="@color/black"
         android:background="@drawable/button"
         android:elevation="10dp"
         android:padding="10dp"
@@ -90,7 +91,7 @@
         android:layout_width="349dp"
         android:layout_height="73dp"
         android:layout_centerHorizontal="true"
-
+        android:textColor="@color/black"
         android:background="@drawable/button"
         android:elevation="10dp"
         android:padding="10dp"

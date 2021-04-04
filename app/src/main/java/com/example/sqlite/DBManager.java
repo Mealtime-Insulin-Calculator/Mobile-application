@@ -46,6 +46,11 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
 
     }
 
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        onCreate(db);
+    }
+
     public boolean addOne(String nameOfFood){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -53,7 +58,7 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
 
         cv.put("FoodName", nameOfFood);
 
-        long insert = db.insert(TableName, null, cv);
+        long insert = db.insert(this.TableName, null, cv);
         if (insert == -1){
             return false;
         } else {
@@ -73,7 +78,7 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
         cv.put("Fibers", fibers);
         cv.put("SubSection", subsection);
 
-        long insert = db.insert(TableName, null, cv);
+        long insert = db.insert(this.TableName, null, cv);
         if (insert == -1){
             return false;
         } else {
@@ -84,7 +89,7 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
 
     public boolean deleteOne(String nameOfFood){
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM " + TableName + "WHERE FoodName = " + nameOfFood;
+        String queryString = "DELETE FROM " + this.TableName + "WHERE FoodName = " + nameOfFood;
 
         Cursor cursor = db.rawQuery(queryString, null);
 
@@ -99,31 +104,15 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
         this.TableName = TableName;
     }
 
-    public Cursor getData(){
-            /*
-            SQLiteDatabase db = this.getReadableDatabase();
-            Cursor cursor = db.rawQuery("SELECT * FROM " + TableName, null);
-            java.util.ArrayList<String> fetchList = new java.util.ArrayList<String>();
+    public Cursor viewData()
+    {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor ;
 
-            if (cursor.moveToFirst()){
-                do {
-                    String FoodName = cursor.getString(1);
-                    String Carbs = cursor.getString(2);
-                    String Fibers = cursor.getString(3);
-                    String Subsection = cursor.getString(4);
+        String query = "Select * from " +this.TableName;
+        cursor= sqLiteDatabase.rawQuery(query, null);
 
-                    fetchList.add(FoodName);
-                    fetchList.add(Carbs);
-                    fetchList.add(Fibers);
-                    fetchList.add(Subsection);
 
-                } while(cursor.moveToNext());
-            }
-    return fetchList;
-
-             */
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TableName, null);
         return cursor;
     }
 }

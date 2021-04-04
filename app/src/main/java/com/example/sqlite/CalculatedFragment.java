@@ -219,6 +219,8 @@ public class CalculatedFragment extends Fragment {
 
                         DB = new DBManager(getActivity(), "Food.db", customPopup.getMealName());
 
+                        System.out.println(DB.viewData());
+
                         for (int i = 0; i < currentMeal.getListOfFood().size(); i++) {
                             Food food = currentMeal.getListOfFood().get(i);
 

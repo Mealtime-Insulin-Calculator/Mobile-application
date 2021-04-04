@@ -30,7 +30,8 @@ public class NotificationFragment extends Fragment {
     private View.OnClickListener buttonBackListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getActivity().getFragmentManager().popBackStack();
+            SettingsFragment settingsFragment = new SettingsFragment();
+            ((MainActivity) getActivity()).fragmentOpenner(settingsFragment);
 
         }
     };
