@@ -43,7 +43,7 @@ public class CustomPopup extends Dialog {
         if (this.radioButtonBreakfast.isChecked()){
 
 
-            return "breakfast";
+            return "Breakfast";
         } else if (this.radioButtonLunch.isChecked()){
 
             return "Lunch";

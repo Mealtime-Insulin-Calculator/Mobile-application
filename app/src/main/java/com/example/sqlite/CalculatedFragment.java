@@ -202,10 +202,10 @@ public class CalculatedFragment extends Fragment {
         public void onClick(View v) {
             CustomPopup customPopup = new CustomPopup(getActivity());
             String str = customPopup.radioButtonCheck();
+
             customPopup.getButtonBack().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     customPopup.dismiss();
                 }
             });
@@ -219,18 +219,23 @@ public class CalculatedFragment extends Fragment {
 
                         DB = new DBManager(getActivity(), "Food.db", customPopup.getMealName());
 
-                        System.out.println(DB.viewData());
+
 
                         for (int i = 0; i < currentMeal.getListOfFood().size(); i++) {
                             Food food = currentMeal.getListOfFood().get(i);
 
                             DB.addOne(food.getName(), food.getCarbohydrates(), food.getFibers(), food.getSubsectionOfFood());
                         }
+                        String category = customPopup.radioButtonCheck();
+
+                        DBManager savedMealCategories = new DBManager(getActivity(), "Category.db", category);
+
                         customPopup.dismiss();
                     }
 
                 }
             });
+
             customPopup.build();
 
         }

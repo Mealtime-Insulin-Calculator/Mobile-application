@@ -4,14 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
-import java.sql.SQLInput;
 
 
 public class DBManager<ArrayList> extends SQLiteOpenHelper{
@@ -43,13 +37,10 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
     // Modify existing database with new elements (simplification)
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
-
-    @Override
-    public void onOpen(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS "+ TableName);
         onCreate(db);
     }
+
 
     public boolean addOne(String nameOfFood){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -104,14 +95,17 @@ public class DBManager<ArrayList> extends SQLiteOpenHelper{
         this.TableName = TableName;
     }
 
-    public Cursor viewData()
+    public Object viewData()
     {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor ;
 
         String query = "Select * from " +this.TableName;
-        cursor= sqLiteDatabase.rawQuery(query, null);
+        cursor = sqLiteDatabase.rawQuery(query, null);
 
+        if (cursor.moveToFirst()) {
+            return cursor.getString(0);
+        }
 
         return cursor;
     }

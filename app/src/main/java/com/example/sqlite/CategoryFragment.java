@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryFragment extends Fragment {
-
+    private DBManager DB;
     private Button buttonBack;
 
 
@@ -37,6 +37,10 @@ public class CategoryFragment extends Fragment {
         recyclerView.setAdapter(new CustomAdapter(generateData()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+
+        DB = new DBManager(getActivity(), "Category.db", "Lunch");
+
+        Toast.makeText(getActivity(), "sisi " + DB.viewData(), Toast.LENGTH_SHORT).show();
 
         return rootView;
 
