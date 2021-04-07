@@ -5,14 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryFragment extends Fragment {
 
     private Button buttonBack;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -20,9 +29,26 @@ public class CategoryFragment extends Fragment {
 
         buttonBack = rootView.findViewById(R.id.ButtonBack);
         buttonBack.setOnClickListener(buttonBackListener);
+
+
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = rootView.findViewById(R.id.RecycleView);
+        recyclerView.setAdapter(new CustomAdapter(generateData()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+
         return rootView;
 
 
+    }
+
+    private List<String> generateData() {
+        List<String> data = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            data.add(String.valueOf(i) + "th Element");
+        }
+        return data;
     }
 
     private View.OnClickListener buttonBackListener = new View.OnClickListener() {
@@ -33,4 +59,5 @@ public class CategoryFragment extends Fragment {
 
         }
     };
+
 }
