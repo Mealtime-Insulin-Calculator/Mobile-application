@@ -3,6 +3,7 @@ package com.example.sqlite;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 
 import android.content.DialogInterface;
@@ -37,7 +38,7 @@ public class CalculatedFragment extends Fragment {
     SavedMeal currentMeal;
     private Button AddElementToSavedMeal;
     private TextView CarbsAmountOutput, FibersAmountOutput, StarterOutput,  MainMealOutput, DrinksOutput, CondimentsOutput;
-    DBManager DB;
+
 
     //PieChart variables
     private PieChart pieChart1;
@@ -216,19 +217,16 @@ public class CalculatedFragment extends Fragment {
                     if (customPopup.getMealName().isEmpty() ) {
                         Toast.makeText(getActivity(), "Enter the meal name plz", Toast.LENGTH_SHORT).show();
                     } else {
-
-                        DB = new DBManager(getActivity(), "Food.db", customPopup.getMealName());
-
+                        DBManager DB = new DBManager(getActivity(), "Food.db");
+                        DB.createTable(customPopup.getMealName());
+                        String category = customPopup.radioButtonCheck();
 
 
                         for (int i = 0; i < currentMeal.getListOfFood().size(); i++) {
                             Food food = currentMeal.getListOfFood().get(i);
 
-                            DB.addOne(food.getName(), food.getCarbohydrates(), food.getFibers(), food.getSubsectionOfFood());
+                            DB.addOne(food.getName(), food.getCarbohydrates(), food.getFibers(), food.getSubsectionOfFood(), category);
                         }
-                        String category = customPopup.radioButtonCheck();
-
-                        DBManager savedMealCategories = new DBManager(getActivity(), "Category.db", category);
 
                         customPopup.dismiss();
                     }

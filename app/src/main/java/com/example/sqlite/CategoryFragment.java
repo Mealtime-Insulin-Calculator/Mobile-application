@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,10 +40,6 @@ public class CategoryFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-        DB = new DBManager(getActivity(), "Category.db", "Lunch");
-
-        Toast.makeText(getActivity(), "sisi " + DB.viewData(), Toast.LENGTH_SHORT).show();
-
         return rootView;
 
 
@@ -49,8 +47,11 @@ public class CategoryFragment extends Fragment {
 
     private List<String> generateData() {
         List<String> data = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            data.add(String.valueOf(i) + "th Element");
+        DB = new DBManager(getActivity(), "Food.db");
+
+        for (int i = 0; i < DB.viewData().size()-1; i++) {
+            String name = DB.viewData().get(i+1);
+            data.add(name);
         }
         return data;
     }
