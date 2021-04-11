@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryFragment extends Fragment {
+public class CategoryLunchFragment extends Fragment {
     private DBManager DB;
     private Button buttonBack;
 
@@ -39,6 +36,8 @@ public class CategoryFragment extends Fragment {
         recyclerView.setAdapter(new CustomAdapter(generateData()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        DB = new DBManager(getActivity(), "Food.db");
+
 
         return rootView;
 
@@ -51,7 +50,14 @@ public class CategoryFragment extends Fragment {
 
         for (int i = 0; i < DB.viewData().size()-1; i++) {
             String name = DB.viewData().get(i+1);
-            data.add(name);
+            String category = DB.getCategory(name);
+
+            if (category == "Lunch"){
+                data.add(name);
+            } else {
+                // nothing
+            }
+
         }
         return data;
     }

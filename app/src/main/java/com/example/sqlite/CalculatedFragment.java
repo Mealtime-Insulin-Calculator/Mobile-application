@@ -220,7 +220,7 @@ public class CalculatedFragment extends Fragment {
                         DBManager DB = new DBManager(getActivity(), "Food.db");
                         DB.createTable(customPopup.getMealName());
                         String category = customPopup.radioButtonCheck();
-
+                        Toast.makeText(getActivity(), "type of MEAL: "+ category, Toast.LENGTH_SHORT).show();
 
                         for (int i = 0; i < currentMeal.getListOfFood().size(); i++) {
                             Food food = currentMeal.getListOfFood().get(i);

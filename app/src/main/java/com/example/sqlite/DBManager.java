@@ -57,6 +57,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
     public void createTable(String TableName){
+        this.TableName = TableName;
         String createTableStatement;
         createTableStatement = "CREATE TABLE " + TableName + "(FoodVariable TEXT, Carbs INTEGER, Fibers INTEGER, SubSection TEXT, Category TEXT)";
         db.execSQL(createTableStatement);
@@ -121,4 +122,18 @@ public class DBManager extends SQLiteOpenHelper {
         return arrTblNames;
     }
 
+    public String getCategory(String TableNam){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Category FROM " + TableNam, null);
+
+        if (cursor.moveToFirst()) {
+            String res = cursor.getString(0);
+            return res;
+        } else {
+            return "non";
+        }
+
+
+
+    }
 }

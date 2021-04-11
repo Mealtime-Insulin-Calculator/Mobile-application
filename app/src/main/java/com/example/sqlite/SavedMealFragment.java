@@ -21,19 +21,46 @@ public class SavedMealFragment extends Fragment {
         Lunch = rootView.findViewById(R.id.Lunch);
         Dinner = rootView.findViewById(R.id.Dinner);
         Snacks = rootView.findViewById(R.id.Snacks);
-        Breakfast.setOnClickListener(categoryListener);
-        Lunch.setOnClickListener(categoryListener);
-        Dinner.setOnClickListener(categoryListener);
-        Snacks.setOnClickListener(categoryListener);
+        Breakfast.setOnClickListener(categoryListenerBreakfast);
+        Lunch.setOnClickListener(categoryListenerLunch);
+        Dinner.setOnClickListener(categoryListenerDinner);
+        Snacks.setOnClickListener(categoryListenerSnacks);
         return rootView;
 
     }
 
-    private View.OnClickListener categoryListener = new View.OnClickListener() {
+    private View.OnClickListener categoryListenerBreakfast = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            CategoryFragment categoryFragment = new CategoryFragment();
-            ((MainActivity) getActivity()).fragmentOpenner(categoryFragment);
+            CategoryBreakFastFragment categoryBreakFastFragment = new CategoryBreakFastFragment();
+            ((MainActivity) getActivity()).fragmentOpenner(categoryBreakFastFragment);
+
+        }
+    };
+
+    private View.OnClickListener categoryListenerLunch = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            CategoryLunchFragment categoryLunchFragment = new CategoryLunchFragment();
+            ((MainActivity) getActivity()).fragmentOpenner(categoryLunchFragment);
+
+        }
+    };
+
+    private View.OnClickListener categoryListenerDinner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            CategoryDinnerFragment categoryDinnerFragment = new CategoryDinnerFragment();
+            ((MainActivity) getActivity()).fragmentOpenner(categoryDinnerFragment);
+
+        }
+    };
+
+    private View.OnClickListener categoryListenerSnacks = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            CategorySnacksFragment categorySnacksFragment = new CategorySnacksFragment();
+            ((MainActivity) getActivity()).fragmentOpenner(categorySnacksFragment);
 
         }
     };
