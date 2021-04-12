@@ -74,7 +74,10 @@ public class CalculationFragment extends Fragment {
         Drinks.setOnClickListener(drinkListener);
         Condiments.setOnClickListener(condimentsListener);
 
-
+        if (getArguments() != null){
+            Bundle bundle = getArguments();
+            currentMeal = (SavedMeal) bundle.getParcelable("currentMeal");
+        }
 
         AddElement.setOnClickListener(addElement);
 

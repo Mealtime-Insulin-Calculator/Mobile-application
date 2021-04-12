@@ -9,6 +9,26 @@
     >
 
     <!-- Calculation title -->
+
+    <android.widget.Button
+        android:id="@+id/ButtonBack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+
+        android:background="@drawable/ic_baseline_arrow_circle_up_24"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:rotation="-90"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.157" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="420dp"
@@ -32,17 +52,24 @@
 
 
     <!-- text elements-->
+
+    <!-- output -->
+
+
+    <!-- pie charts layouts -->
+
+
     <TextView
         android:id="@+id/CarbsAmount"
-        android:textColor="#DADADA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Carbs :"
+        android:textColor="#DADADA"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.016" />
@@ -53,27 +80,26 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Fibers :"
+        android:textColor="#DADADA"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="#DADADA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.087" />
 
-    <!-- output -->
     <TextView
         android:id="@+id/CarbsAmountOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text=""
-        android:textSize="24sp"
         android:textColor="#DADADA"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.016" />
@@ -84,18 +110,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text=""
-        android:textSize="24sp"
         android:textColor="#DADADA"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.087" />
-
-
-    <!-- pie charts layouts -->
-
 
     <TextView
         android:id="@+id/Starter"

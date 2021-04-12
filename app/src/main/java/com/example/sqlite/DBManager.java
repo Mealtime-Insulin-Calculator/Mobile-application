@@ -60,7 +60,9 @@ public class DBManager extends SQLiteOpenHelper {
         this.TableName = TableName;
         String createTableStatement;
         createTableStatement = "CREATE TABLE " + TableName + "(FoodVariable TEXT, Carbs INTEGER, Fibers INTEGER, SubSection TEXT, Category TEXT)";
+        db.execSQL("DROP TABLE IF EXISTS " + TableName);
         db.execSQL(createTableStatement);
+
     }
 
     public void setTableName(String TableName) {
@@ -133,7 +135,17 @@ public class DBManager extends SQLiteOpenHelper {
             return "non";
         }
 
+    }
 
+    public SavedMeal getTableInformation(String TableNam){
+        SavedMeal currentMeal = new SavedMeal();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TableNam, null);
+
+        while (cursor.moveToNext()){
+            currentMeal.additionOfFood(new Food(cursor.getInt(1),cursor.getInt(2),cursor.getString(0),cursor.getString(3)));
+        }
+        return currentMeal;
 
     }
 }

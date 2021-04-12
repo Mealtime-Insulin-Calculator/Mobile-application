@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.content.DialogInterface;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class CalculatedFragment extends Fragment {
     SavedMeal currentMeal;
     private Button AddElementToSavedMeal;
     private TextView CarbsAmountOutput, FibersAmountOutput, StarterOutput,  MainMealOutput, DrinksOutput, CondimentsOutput;
-
+    private Button buttonBack;
 
     //PieChart variables
     private PieChart pieChart1;
@@ -63,7 +64,8 @@ public class CalculatedFragment extends Fragment {
 
         FibersAmountOutput = (TextView) rootView.findViewById(R.id.FibersAmountOutput);
 
-
+        buttonBack = rootView.findViewById(R.id.ButtonBack);
+        buttonBack.setOnClickListener(buttonBackListener);
 
         AddElementToSavedMeal = rootView.findViewById(R.id.AddElementToSavedMeal);
         AddElementToSavedMeal.setOnClickListener(addElementSavedMeal);
@@ -238,6 +240,21 @@ public class CalculatedFragment extends Fragment {
 
         }
 
+    };
+
+    private View.OnClickListener buttonBackListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            CalculationFragment calculationFragment = new CalculationFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("currentMeal", (Parcelable) currentMeal);
+            calculationFragment.setArguments(bundle);
+
+            ((MainActivity) getActivity()).fragmentOpenner(calculationFragment);
+
+        }
     };
 
 }

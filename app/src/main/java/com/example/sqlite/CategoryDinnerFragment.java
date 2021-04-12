@@ -33,7 +33,7 @@ public class CategoryDinnerFragment extends Fragment {
 
         // set up the RecyclerView
         RecyclerView recyclerView = rootView.findViewById(R.id.RecycleView);
-        recyclerView.setAdapter(new CustomAdapter(generateData()));
+        recyclerView.setAdapter(new CustomAdapter(generateData(),this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         DB = new DBManager(getActivity(), "Food.db");
@@ -52,7 +52,7 @@ public class CategoryDinnerFragment extends Fragment {
             String name = DB.viewData().get(i+1);
             String category = DB.getCategory(name);
 
-            if (category == "Dinner"){
+            if (category.equals("Dinner")){
                 data.add(name);
             } else {
                 // nothing

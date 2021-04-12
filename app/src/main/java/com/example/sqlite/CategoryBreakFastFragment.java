@@ -39,7 +39,7 @@ public class CategoryBreakFastFragment extends Fragment {
 
         // set up the RecyclerView
         RecyclerView recyclerView = rootView.findViewById(R.id.RecycleView);
-        recyclerView.setAdapter(new CustomAdapter(generateData()));
+        recyclerView.setAdapter(new CustomAdapter(generateData(),this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         DB = new DBManager(getActivity(), "Food.db");
@@ -57,11 +57,11 @@ public class CategoryBreakFastFragment extends Fragment {
         for (int i = 0; i < DB.viewData().size()-1; i++) {
             String name = DB.viewData().get(i+1);
             String category = DB.getCategory(name);
-
-            if (category == "Breakfast"){
+            System.out.println(category);
+            if (category.equals("Breakfast")){
                 data.add(name);
             } else {
-                // nothing
+                //data.add(name+":"+category);
             }
 
         }
@@ -71,6 +71,7 @@ public class CategoryBreakFastFragment extends Fragment {
     private View.OnClickListener buttonBackListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             SavedMealFragment savedMealFragment = new SavedMealFragment();
             ((MainActivity) getActivity()).fragmentOpenner(savedMealFragment);
 
